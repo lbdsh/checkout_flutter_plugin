@@ -1,3 +1,9 @@
+## 1.3.1
+
+- **Fix:** iOS height tracking now uses `sizeThatFits` with timer polling instead of KVO, reliably detecting SwiftUI content size changes (e.g. validation errors).
+- **Fix:** Added `sizingOptions = .intrinsicContentSize` on iOS 16+ for accurate hosting controller sizing.
+- **Fix:** iOS 15 compatibility preserved with availability check.
+
 ## 1.3.0
 
 - **New:** Dynamic height — widget auto-resizes when content changes (e.g. validation errors appear), growing downward with smooth animation.

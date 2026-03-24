@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'checkout_com_flow'
-  s.version          = '1.3.0'
+  s.version          = '1.3.1'
   s.summary          = 'Flutter plugin for Checkout.com Flow payment components.'
   s.description      = 'Integrates Checkout.com Flow for accepting payments on iOS and Android.'
   s.homepage         = 'https://github.com/lbdsh/checkout_flutter_plugin'

@@ -6,9 +6,9 @@ import CheckoutComponentsSDK
 class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
     private let containerView: UIView
     private let channel: FlutterMethodChannel
-    private var hostingController: UIViewController?
-    private var heightObservation: NSKeyValueObservation?
+    private var hostingController: UIHostingController<AnyView>?
     private var lastReportedHeight: CGFloat = 0
+    private var heightCheckTimer: Timer?
 
     init(
         frame: CGRect,
@@ -94,8 +94,11 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
                 }
 
                 if component.isAvailable {
-                    let swiftUIView = component.render()
+                    let swiftUIView = AnyView(component.render())
                     let hosting = UIHostingController(rootView: swiftUIView)
+                    if #available(iOS 16.0, *) {
+                        hosting.sizingOptions = .intrinsicContentSize
+                    }
                     self.hostingController = hosting
                     hosting.view.translatesAutoresizingMaskIntoConstraints = false
                     hosting.view.backgroundColor = .clear
@@ -108,23 +111,9 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
                         hosting.view.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor),
                     ])
 
-                    // Observe content size changes and report to Flutter
-                    self.heightObservation = hosting.view.observe(\.bounds, options: [.new]) { [weak self] view, _ in
-                        guard let self = self else { return }
-                        let fittingSize = view.systemLayoutSizeFitting(
-                            CGSize(width: view.bounds.width, height: UIView.layoutFittingCompressedSize.height),
-                            withHorizontalFittingPriority: .required,
-                            verticalFittingPriority: .fittingSizeLevel
-                        )
-                        let newHeight = max(fittingSize.height, view.intrinsicContentSize.height)
-                        if newHeight > 0 && abs(newHeight - self.lastReportedHeight) > 1 {
-                            self.lastReportedHeight = newHeight
-                            DispatchQueue.main.async {
-                                self.channel.invokeMethod("onHeightChanged", arguments: [
-                                    "height": newHeight
-                                ])
-                            }
-                        }
+                    // Poll for height changes since SwiftUI content can resize
+                    self.heightCheckTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { [weak self] _ in
+                        self?.checkContentHeight()
                     }
 
                     self.channel.invokeMethod("onReady", arguments: nil)
@@ -141,6 +130,25 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
                 ])
             }
         }
+    }
+
+    // MARK: - Height tracking
+
+    private func checkContentHeight() {
+        guard let hosting = hostingController else { return }
+        let width = containerView.bounds.width > 0 ? containerView.bounds.width : UIScreen.main.bounds.width
+        let fittingSize = hosting.sizeThatFits(in: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude))
+        let newHeight = fittingSize.height
+        if newHeight > 0 && abs(newHeight - lastReportedHeight) > 2 {
+            lastReportedHeight = newHeight
+            channel.invokeMethod("onHeightChanged", arguments: [
+                "height": newHeight
+            ])
+        }
+    }
+
+    deinit {
+        heightCheckTimer?.invalidate()
     }
 
     // MARK: - Design Tokens
