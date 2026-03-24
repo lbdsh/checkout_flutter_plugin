@@ -4,6 +4,42 @@ A Flutter plugin that integrates [Checkout.com Flow](https://www.checkout.com/do
 
 Flow provides a pre-built, customizable payment UI that handles card payments, Apple Pay, Google Pay, and other payment methods — all managed by Checkout.com.
 
+---
+
+> **DISCLAIMER — UNOFFICIAL PLUGIN**
+>
+> This package is **NOT** an official Checkout.com product. It is an independent, community-driven project and is **not affiliated with, endorsed by, sponsored by, or in any way officially connected to Checkout.com** or any of its subsidiaries or affiliates.
+>
+> The official Checkout.com website can be found at [https://www.checkout.com](https://www.checkout.com).
+>
+> For any questions, issues, or support regarding Checkout.com products and services, please contact Checkout.com directly:
+>
+> - **Documentation:** [https://www.checkout.com/docs](https://www.checkout.com/docs)
+> - **Support:** [https://www.checkout.com/contact-us](https://www.checkout.com/contact-us)
+>
+> The names "Checkout.com", "Flow", and any related trademarks are the property of their respective owners.
+
+---
+
+## Warranty & Liability
+
+**THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.**
+
+**IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.**
+
+The authors of this plugin:
+
+- Make **no guarantees** about the correctness, reliability, or security of this software.
+- Accept **no responsibility** for any financial loss, data breach, or other damages resulting from the use of this plugin.
+- Provide **no warranty** that this plugin will be compatible with current or future versions of the Checkout.com APIs or SDKs.
+- Offer **no official support** — issues may be filed on the repository, but responses are on a best-effort basis.
+
+**By using this plugin, you acknowledge that you do so entirely at your own risk.**
+
+For production payment processing, always refer to the [official Checkout.com documentation](https://www.checkout.com/docs) and consider using the official native SDKs directly.
+
+---
+
 ## Features
 
 - Native Checkout.com Flow UI embedded as a Flutter widget
@@ -181,6 +217,14 @@ Ensure your `minSdkVersion` is at least 21 and `compileSdkVersion` is at least 3
 
 Ensure your deployment target is at least iOS 13.0 in your Xcode project settings.
 
+## Contributing
+
+Contributions are welcome! Please note that this is a community project — it is not maintained by Checkout.com. Before submitting a pull request, ensure your changes work on both Android and iOS.
+
 ## License
 
 MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+*This project is not affiliated with Checkout.com. All trademarks belong to their respective owners.*

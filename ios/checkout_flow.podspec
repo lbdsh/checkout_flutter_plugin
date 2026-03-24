@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.description      = 'Integrates Checkout.com Flow for accepting payments on iOS and Android.'
   s.homepage         = 'https://checkout.com'
   s.license          = { :type => 'MIT', :file => '../LICENSE' }
-  s.author           = { 'Checkout.com' => 'support@checkout.com' }
+  s.author           = { 'Community' => '' }
   s.source           = { :path => '.' }
   s.source_files     = 'Classes/**/*'
   s.dependency 'Flutter'
