@@ -44,6 +44,8 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
             : .sandbox
 
         let componentType = args["componentType"] as? String ?? "flow"
+        let locale = args["locale"] as? String
+        print("[CHECKOUT_FLOW_IOS] locale received: \(locale ?? "nil")")
 
         // Build DesignTokens from theme map
         let designTokens = Self.buildDesignTokens(from: args["theme"] as? [String: Any])
@@ -60,6 +62,7 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
                     publicKey: publicKey,
                     environment: environment,
                     appearance: designTokens,
+                    locale: locale,
                     callbacks: .init(
                         onSuccess: { [weak self] _, paymentID in
                             DispatchQueue.main.async {

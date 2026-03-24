@@ -3,7 +3,7 @@ description: >
   Flutter plugin for Checkout.com Flow payment components.
   Embeds the native Flow UI on Android and iOS to accept card payments,
   Apple Pay, Google Pay, and more.
-version: 1.1.1
+version: 1.2.0
 homepage: https://github.com/lbdsh/checkout_flutter_plugin
 repository: https://github.com/lbdsh/checkout_flutter_plugin
 issue_tracker: https://github.com/lbdsh/checkout_flutter_plugin/issues

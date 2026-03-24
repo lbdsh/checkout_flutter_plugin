@@ -55,10 +55,13 @@ class CheckoutFlowPlatformView(
                 else -> Environment.SANDBOX
             }
 
+            val locale = params["locale"] as? String
+
             val config = CheckoutComponentConfiguration(
                 context = context,
                 publicKey = publicKey,
                 environment = environment,
+                locale = locale,
                 paymentSession = PaymentSessionResponse(
                     id = paymentSessionId,
                     secret = paymentSessionSecret

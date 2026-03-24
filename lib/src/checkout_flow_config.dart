@@ -33,6 +33,10 @@ class CheckoutFlowConfig {
   /// Optional theme customization.
   final CheckoutFlowTheme? theme;
 
+  /// Optional locale code (e.g. "it-IT", "en-GB", "de-DE").
+  /// If null, the SDK uses the device locale.
+  final String? locale;
+
   const CheckoutFlowConfig({
     required this.publicKey,
     required this.paymentSessionId,
@@ -41,6 +45,7 @@ class CheckoutFlowConfig {
     this.environment = CheckoutFlowEnvironment.sandbox,
     this.componentType = CheckoutComponentType.flow,
     this.theme,
+    this.locale,
   });
 
   /// Converts this configuration to a map for platform channel serialization.
@@ -54,6 +59,7 @@ class CheckoutFlowConfig {
       'environment': environment.name,
       'componentType': componentType.name,
       if (theme != null) 'theme': theme!.toMap(),
+      if (locale != null) 'locale': locale,
     };
   }
 }
