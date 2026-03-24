@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/CheckoutComponentsPackage.build/master.swiftdeps"
+  },
+  "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/checkouts/checkout-ios-components/CheckoutComponentsPackage/dummy.swift": {
+    "dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/CheckoutComponentsPackage.build/dummy.d",
+    "object": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/CheckoutComponentsPackage.build/dummy.swift.o",
+    "swiftmodule": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/CheckoutComponentsPackage.build/dummy~partial.swiftmodule",
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/CheckoutComponentsPackage.build/dummy.swiftdeps",
+    "diagnostics": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/CheckoutComponentsPackage.build/dummy.dia"
+  }
+}

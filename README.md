@@ -43,17 +43,20 @@ For production payment processing, always refer to the [official Checkout.com do
 ## Features
 
 - Native Checkout.com Flow UI embedded as a Flutter widget
-- Supports Android (Jetpack Views) and iOS (UIKit)
+- Supports Android (Jetpack Views) and iOS (SwiftUI via UIKit bridge)
 - Sandbox and Production environments
 - Typed result callbacks (success, error, cancelled)
 - Apple Pay and Google Pay support (managed by Flow)
+- **Full theme customization** — colors, border radius, dark mode support
+- **Component type selection** — full Flow or card-only mode
+- iOS uses Swift Package Manager for the native Checkout.com SDK dependency
 
 ## Requirements
 
 | Platform | Minimum Version |
 |----------|----------------|
 | Android  | API 21 (5.0)   |
-| iOS      | 13.0           |
+| iOS      | 15.0           |
 | Flutter  | 3.10.0         |
 | Dart     | 3.0.0          |
 
@@ -74,7 +77,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  checkout_com_flow: ^0.1.1
+  checkout_com_flow: ^1.1.0
 ```
 
 Then run:
@@ -98,11 +101,9 @@ allprojects {
 
 ### iOS Setup
 
-Run `pod install` in the `ios/` directory:
+The plugin uses Swift Package Manager to resolve the Checkout.com native SDK. No additional setup is needed if your project uses CocoaPods — the vendored xcframework is included.
 
-```bash
-cd ios && pod install
-```
+If you encounter build issues on Xcode 16+, ensure the podspec includes `SWIFT_ENABLE_EXPLICIT_MODULES => NO` (already set in the published version).
 
 ## Usage
 
@@ -137,7 +138,6 @@ CheckoutFlowWidget(
   config: CheckoutFlowConfig(
     publicKey: 'pk_sbox_xxx',
     paymentSessionId: 'ps_xxx',
-    paymentSessionToken: 'token_xxx',
     paymentSessionSecret: 'secret_xxx',
     environment: CheckoutFlowEnvironment.sandbox,
   ),
@@ -154,11 +154,81 @@ CheckoutFlowWidget(
   onReady: () {
     print('Flow component is ready');
   },
-  height: 500, // optional, defaults to 400
+  height: 420,
 )
 ```
 
-### 3. Handle the result
+### 3. Dark mode theme
+
+Use the built-in dark theme preset or customize individual colors:
+
+```dart
+CheckoutFlowWidget(
+  config: CheckoutFlowConfig(
+    publicKey: 'pk_sbox_xxx',
+    paymentSessionId: 'ps_xxx',
+    paymentSessionSecret: 'secret_xxx',
+    // Use the dark theme preset
+    theme: const CheckoutFlowTheme.dark(),
+  ),
+  onResult: _handleResult,
+)
+```
+
+### 4. Custom theme
+
+Customize every color and border radius:
+
+```dart
+CheckoutFlowWidget(
+  config: CheckoutFlowConfig(
+    publicKey: 'pk_sbox_xxx',
+    paymentSessionId: 'ps_xxx',
+    paymentSessionSecret: 'secret_xxx',
+    theme: const CheckoutFlowTheme(
+      actionColor: '#FF6B00',       // Pay button color
+      backgroundColor: '#1A1A2E',   // Container background
+      formBackgroundColor: '#2A2A3E', // Input fields background
+      formBorderColor: '#4A4A5E',   // Input fields border
+      primaryColor: '#FFFFFF',      // Primary text
+      secondaryColor: '#9A9AAE',    // Placeholder text
+      borderColor: '#3A3A4E',       // General borders
+      inverseColor: '#1A1A2E',      // Text on action buttons
+      outlineColor: '#6C6CFF',      // Focus ring
+      errorColor: '#FF6B6B',        // Error messages
+      successColor: '#4ADE80',      // Success state
+      disabledColor: '#4A4A5E',     // Disabled elements
+      borderButtonRadius: 12,       // Button corner radius
+      borderFormRadius: 8,          // Input field corner radius
+    ),
+  ),
+  onResult: _handleResult,
+)
+```
+
+### 5. Component type
+
+Choose between the full Flow component or card-only mode:
+
+```dart
+// Card-only: shows just the card fields and Pay button (no radio selector)
+CheckoutFlowWidget(
+  config: CheckoutFlowConfig(
+    publicKey: 'pk_sbox_xxx',
+    paymentSessionId: 'ps_xxx',
+    paymentSessionSecret: 'secret_xxx',
+    componentType: CheckoutComponentType.card,
+  ),
+  onResult: _handleResult,
+)
+```
+
+| Type | Description |
+|------|-------------|
+| `CheckoutComponentType.flow` | Full Flow UI with payment method selector (default) |
+| `CheckoutComponentType.card` | Card-only fields with Pay button, no radio selector |
+
+### 6. Handle the result
 
 `CheckoutFlowResult` is a sealed class with three subtypes:
 
@@ -176,13 +246,34 @@ Some payment methods (e.g. 3DS, redirects) complete asynchronously. In this case
 
 ### CheckoutFlowConfig
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `publicKey` | `String` | Yes | Your Checkout.com public API key |
-| `paymentSessionId` | `String` | Yes | Payment session ID from server |
-| `paymentSessionToken` | `String` | Yes | Payment session token from server |
-| `paymentSessionSecret` | `String` | Yes | Payment session secret from server |
-| `environment` | `CheckoutFlowEnvironment` | No | `sandbox` (default) or `production` |
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `publicKey` | `String` | Yes | — | Your Checkout.com public API key |
+| `paymentSessionId` | `String` | Yes | — | Payment session ID from server |
+| `paymentSessionToken` | `String?` | No | `null` | Payment session token (legacy, optional since SDK v1.6+) |
+| `paymentSessionSecret` | `String` | Yes | — | Payment session secret from server |
+| `environment` | `CheckoutFlowEnvironment` | No | `sandbox` | `sandbox` or `production` |
+| `componentType` | `CheckoutComponentType` | No | `flow` | `flow` or `card` |
+| `theme` | `CheckoutFlowTheme?` | No | `null` | Custom theme (null = default light theme) |
+
+### CheckoutFlowTheme
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `actionColor` | `String?` | `#0B5FFF` | Pay button and link color |
+| `backgroundColor` | `String?` | `#FFFFFF` | Container background |
+| `borderColor` | `String?` | SDK default | General border color |
+| `disabledColor` | `String?` | SDK default | Disabled element color |
+| `errorColor` | `String?` | SDK default | Error message color |
+| `formBackgroundColor` | `String?` | `#FFFFFF` | Input field background |
+| `formBorderColor` | `String?` | SDK default | Input field border |
+| `inverseColor` | `String?` | `#FFFFFF` | Text on action buttons |
+| `outlineColor` | `String?` | SDK default | Focus ring color |
+| `primaryColor` | `String?` | `#000000` | Primary text color |
+| `secondaryColor` | `String?` | SDK default | Placeholder/hint text |
+| `successColor` | `String?` | SDK default | Success state color |
+| `borderButtonRadius` | `double?` | `8` | Button corner radius |
+| `borderFormRadius` | `double?` | `8` | Form field corner radius |
 
 ### CheckoutFlowWidget
 
@@ -215,7 +306,21 @@ Ensure your `minSdkVersion` is at least 21 and `compileSdkVersion` is at least 3
 
 ### Build errors on iOS
 
-Ensure your deployment target is at least iOS 13.0 in your Xcode project settings.
+Ensure your deployment target is at least iOS 15.0 in your Xcode project settings.
+
+### Xcode 16+ / Xcode 26 build errors
+
+If you see `Unable to find module dependency: 'CheckoutComponentsSDK'`, this is related to Xcode's explicit module build feature. The plugin's podspec already sets `SWIFT_ENABLE_EXPLICIT_MODULES => NO` to work around this. If you still encounter issues, add the following to your `ios/Podfile`:
+
+```ruby
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_ENABLE_EXPLICIT_MODULES'] = 'NO'
+    end
+  end
+end
+```
 
 ## Contributing
 

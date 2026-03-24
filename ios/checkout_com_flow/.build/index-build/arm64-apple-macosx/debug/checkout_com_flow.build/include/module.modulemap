@@ -1,0 +1,3 @@
+module checkout_com_flow {
+    header "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/checkout_com_flow.build/include/checkout_com_flow-Swift.h"
+}

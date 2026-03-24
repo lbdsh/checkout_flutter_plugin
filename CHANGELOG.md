@@ -1,3 +1,22 @@
+## 1.1.0
+
+- **New:** Full theme customization via `CheckoutFlowTheme` — supports all 12 color tokens (`actionColor`, `backgroundColor`, `formBackgroundColor`, `primaryColor`, etc.) and border radius for buttons and form fields.
+- **New:** Built-in dark mode preset with `CheckoutFlowTheme.dark()`.
+- **New:** Component type selection via `CheckoutComponentType` — choose between `flow` (full payment method selector) or `card` (card-only fields with Pay button).
+- **iOS:** Theme colors and border radius passed to native `DesignTokens` API.
+- **Android:** Component type support (`ComponentName.Card` vs `ComponentName.Flow`).
+- **Improved:** Error messages now include full error details instead of just `localizedDescription`.
+- Updated README with theme customization examples, dark mode guide, and troubleshooting for Xcode 16+/26.
+
+## 1.0.3
+
+- **iOS:** Fixed Xcode 26 build by setting `SWIFT_ENABLE_EXPLICIT_MODULES => NO` in podspec.
+- **iOS:** Vendored xcframework works correctly with CocoaPods on Xcode 26.
+
+## 1.0.2
+
+- Version bump for pub.dev publishing.
+
 ## 0.3.1
 
 - **iOS:** Fixed Xcode 26 build with `BUILD_LIBRARY_FOR_DISTRIBUTION` xcconfig.

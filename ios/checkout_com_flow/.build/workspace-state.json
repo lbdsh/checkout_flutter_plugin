@@ -1,0 +1,138 @@
+{
+  "object" : {
+    "artifacts" : [
+      {
+        "kind" : {
+          "xcframework" : {
+
+          }
+        },
+        "packageRef" : {
+          "identity" : "checkout-event-logger-ios-framework",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/checkout/checkout-event-logger-ios-framework.git",
+          "name" : "CheckoutEventLoggerKit"
+        },
+        "path" : "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/checkouts/checkout-event-logger-ios-framework/CheckoutEventLoggerKit.xcframework",
+        "source" : {
+          "type" : "local"
+        },
+        "targetName" : "CheckoutEventLoggerKit"
+      },
+      {
+        "kind" : {
+          "xcframework" : {
+
+          }
+        },
+        "packageRef" : {
+          "identity" : "checkout-ios-components",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/checkout/checkout-ios-components",
+          "name" : "CheckoutComponents"
+        },
+        "path" : "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/artifacts/checkout-ios-components/CheckoutComponentsSDK/CheckoutComponentsSDK.xcframework",
+        "source" : {
+          "checksum" : "ef0cac5806e22c53fa12e2e8b0e338c242a4b45ee9227ff491a1f27e70b99d59",
+          "type" : "remote",
+          "url" : "https://github.com/checkout/checkout-ios-components/releases/download/1.6.2/CheckoutComponentsSDK.xcframework.zip"
+        },
+        "targetName" : "CheckoutComponentsSDK"
+      },
+      {
+        "kind" : {
+          "xcframework" : {
+
+          }
+        },
+        "packageRef" : {
+          "identity" : "fingerprintjs-pro-ios",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/fingerprintjs/fingerprintjs-pro-ios",
+          "name" : "FingerprintPro"
+        },
+        "path" : "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/artifacts/fingerprintjs-pro-ios/FingerprintPro/FingerprintPro.xcframework",
+        "source" : {
+          "checksum" : "6c09a037218dc8ac10233d334de4dcdc4832fbf5f057c60ee8932d30d551190f",
+          "type" : "remote",
+          "url" : "https://fpjs-public.s3.amazonaws.com/ios/2.13.0/FingerprintPro-2.13.0-6c09a037218dc8ac10233d334de4dcdc4832fbf5f057c60ee8932d30d551190f.xcframework.zip"
+        },
+        "targetName" : "FingerprintPro"
+      }
+    ],
+    "dependencies" : [
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "checkout-event-logger-ios-framework",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/checkout/checkout-event-logger-ios-framework.git",
+          "name" : "CheckoutEventLoggerKit"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "a914d754b4ffb1843730e8e1f8e7e60c4bf81cf9",
+            "version" : "1.2.4"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "checkout-event-logger-ios-framework"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "checkout-ios-components",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/checkout/checkout-ios-components",
+          "name" : "CheckoutComponents"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "8f8268be8756d93fb6800cc2746fbb6b9cfeb751",
+            "version" : "1.6.2"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "checkout-ios-components"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "checkout-risk-sdk-ios",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/checkout/checkout-risk-sdk-ios",
+          "name" : "Risk"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "7f944921720dc879b63ac3bb51f56dd6eb50919c",
+            "version" : "4.0.2"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "checkout-risk-sdk-ios"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "fingerprintjs-pro-ios",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/fingerprintjs/fingerprintjs-pro-ios",
+          "name" : "FingerprintPro"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "21bcfcfd2e1bce943f668a7748f8a7e1154f0ac2",
+            "version" : "2.13.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "fingerprintjs-pro-ios"
+      }
+    ],
+    "prebuilts" : [
+
+    ]
+  },
+  "version" : 7
+}

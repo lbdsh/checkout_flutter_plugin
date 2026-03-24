@@ -1,0 +1,80 @@
+bfcb95b9edae12df0963e002169c746b84e492e6	not-for-merge	branch 'PRISM-10976-pass-the-sdk-version-to-the-device-data-api-on-risk-i-os' of https://github.com/checkout/checkout-risk-sdk-ios
+9c654ff5869f868cfabc444fb6850286cb5f836b	not-for-merge	branch 'PRISM-11093-log-the-breakdown-of-latency-metrics-by-operations-in-the-respective-events-on-risk-i-os' of https://github.com/checkout/checkout-risk-sdk-ios
+fec6eb1426715868c2fe12f1ed4da67c70080cd1	not-for-merge	branch 'PRISM-11103-risk-i-os-logs-timezone-to-device-data-api-on-configuration-endpoint' of https://github.com/checkout/checkout-risk-sdk-ios
+d958f7c7a80d93696492fe81160361c61510cd48	not-for-merge	branch 'PRISM-11139-accept-correlation-id-on-frames-mode-on-risk-i-os' of https://github.com/checkout/checkout-risk-sdk-ios
+69124adb4c74627793fb85a3694b94fe8d134b53	not-for-merge	branch 'PRISM-11214-accept-more-frames-options-on-risk-i-os' of https://github.com/checkout/checkout-risk-sdk-ios
+c67257e6b90090a3607e684e1a5a6631f53d25d6	not-for-merge	branch 'PRISM-11343-risk-sdk-should-wrap-fingerprint-implementation-within-a-timeout' of https://github.com/checkout/checkout-risk-sdk-ios
+de317467139e290f634680469af4e944349c4fa8	not-for-merge	branch 'Update-cocoapods-action' of https://github.com/checkout/checkout-risk-sdk-ios
+b70eda70b7aa17e43f54687fdb97ff4f4143db83	not-for-merge	branch 'bump-cocoapods-4.0.0' of https://github.com/checkout/checkout-risk-sdk-ios
+e2c9d74efd252a7db18ace1a337c557db4515940	not-for-merge	branch 'ehab-al-cko-patch-1' of https://github.com/checkout/checkout-risk-sdk-ios
+7f944921720dc879b63ac3bb51f56dd6eb50919c	not-for-merge	branch 'main' of https://github.com/checkout/checkout-risk-sdk-ios
+0f93da9fdd9f227b83195d22a47d6eb906a483b6	not-for-merge	branch 'no-jira-3.0.2' of https://github.com/checkout/checkout-risk-sdk-ios
+962e736eb044eaa5e63995ae68acac767c67435e	not-for-merge	branch 'no-jira-add-timezone-and-sdk-version-to-logs' of https://github.com/checkout/checkout-risk-sdk-ios
+2b281e30270487941a532adbafaea9956a5b156b	not-for-merge	branch 'no-jira-remove-correlation-id-from-frames-options' of https://github.com/checkout/checkout-risk-sdk-ios
+679034dd4b6c5736cdd43f044025b82f1fdb8aa1	not-for-merge	branch 'no-jira-remove-redundant-config' of https://github.com/checkout/checkout-risk-sdk-ios
+38c834288ecd849d808f40d30b13a013c24c63ba	not-for-merge	branch 'no-jira-update-examples-1.0.2' of https://github.com/checkout/checkout-risk-sdk-ios
+3e483c5959cf532e52f0e2ee949e5d72d45e3b67	not-for-merge	branch 'open-fingerprintpro-versions' of https://github.com/checkout/checkout-risk-sdk-ios
+f18c375e23b1798eef7c2bb4619a06b67ae2a397	not-for-merge	branch 'refactor/risk-instance' of https://github.com/checkout/checkout-risk-sdk-ios
+8d3584a776dcf04372f9efa6ae30afaf1bc16296	not-for-merge	branch 'wip/publish-data-protocol-extension' of https://github.com/checkout/checkout-risk-sdk-ios
+9b86fb02d2fea74a46bbc079f91aa1ae7019583c	not-for-merge	'refs/pull/1/head' of https://github.com/checkout/checkout-risk-sdk-ios
+196ce37b059aa7f7951623f42007f65a34ebbb6b	not-for-merge	'refs/pull/10/head' of https://github.com/checkout/checkout-risk-sdk-ios
+7b0b7179f8924e2b87623959061c6b3bc22691ab	not-for-merge	'refs/pull/11/head' of https://github.com/checkout/checkout-risk-sdk-ios
+5151190170af27ee6e4262951e4b58daea6c484d	not-for-merge	'refs/pull/12/head' of https://github.com/checkout/checkout-risk-sdk-ios
+b8e800e2eb76eb3a26b0a469d314ef1a1735a822	not-for-merge	'refs/pull/13/head' of https://github.com/checkout/checkout-risk-sdk-ios
+4b37fb4fb0b67607791b8bd27d826bb9b486a309	not-for-merge	'refs/pull/14/head' of https://github.com/checkout/checkout-risk-sdk-ios
+5fdc751ccb5e1b374f9e021f8acf6e93f8a59984	not-for-merge	'refs/pull/15/head' of https://github.com/checkout/checkout-risk-sdk-ios
+dfbc1e953e9f8bf22822267e4ab287153e5b0684	not-for-merge	'refs/pull/16/head' of https://github.com/checkout/checkout-risk-sdk-ios
+a410a80a769e612762449fdf2cdc5a2eb82753fc	not-for-merge	'refs/pull/17/head' of https://github.com/checkout/checkout-risk-sdk-ios
+72392e811207cacb5ab1e23b7322d0cfce17deed	not-for-merge	'refs/pull/18/head' of https://github.com/checkout/checkout-risk-sdk-ios
+4df631b25f28a17b2fc75c86a51230392471b631	not-for-merge	'refs/pull/19/head' of https://github.com/checkout/checkout-risk-sdk-ios
+b2d5dbee4b780429d1376f0e53886296e935ae08	not-for-merge	'refs/pull/2/head' of https://github.com/checkout/checkout-risk-sdk-ios
+962e736eb044eaa5e63995ae68acac767c67435e	not-for-merge	'refs/pull/20/head' of https://github.com/checkout/checkout-risk-sdk-ios
+38c834288ecd849d808f40d30b13a013c24c63ba	not-for-merge	'refs/pull/21/head' of https://github.com/checkout/checkout-risk-sdk-ios
+bfcb95b9edae12df0963e002169c746b84e492e6	not-for-merge	'refs/pull/22/head' of https://github.com/checkout/checkout-risk-sdk-ios
+bfcb95b9edae12df0963e002169c746b84e492e6	not-for-merge	'refs/pull/23/head' of https://github.com/checkout/checkout-risk-sdk-ios
+679034dd4b6c5736cdd43f044025b82f1fdb8aa1	not-for-merge	'refs/pull/24/head' of https://github.com/checkout/checkout-risk-sdk-ios
+f18c375e23b1798eef7c2bb4619a06b67ae2a397	not-for-merge	'refs/pull/25/head' of https://github.com/checkout/checkout-risk-sdk-ios
+fec6eb1426715868c2fe12f1ed4da67c70080cd1	not-for-merge	'refs/pull/26/head' of https://github.com/checkout/checkout-risk-sdk-ios
+9c654ff5869f868cfabc444fb6850286cb5f836b	not-for-merge	'refs/pull/27/head' of https://github.com/checkout/checkout-risk-sdk-ios
+d958f7c7a80d93696492fe81160361c61510cd48	not-for-merge	'refs/pull/28/head' of https://github.com/checkout/checkout-risk-sdk-ios
+69124adb4c74627793fb85a3694b94fe8d134b53	not-for-merge	'refs/pull/29/head' of https://github.com/checkout/checkout-risk-sdk-ios
+a1ee02fde2e51c7eb67f5340b6b0861c116d36b5	not-for-merge	'refs/pull/3/head' of https://github.com/checkout/checkout-risk-sdk-ios
+2b281e30270487941a532adbafaea9956a5b156b	not-for-merge	'refs/pull/30/head' of https://github.com/checkout/checkout-risk-sdk-ios
+0f93da9fdd9f227b83195d22a47d6eb906a483b6	not-for-merge	'refs/pull/31/head' of https://github.com/checkout/checkout-risk-sdk-ios
+c67257e6b90090a3607e684e1a5a6631f53d25d6	not-for-merge	'refs/pull/32/head' of https://github.com/checkout/checkout-risk-sdk-ios
+1f0586c17ef227db360ff0608f78b3fbc0aeff38	not-for-merge	'refs/pull/34/head' of https://github.com/checkout/checkout-risk-sdk-ios
+c318e40cd05939d5052e04bb01787fc593d97b4d	not-for-merge	'refs/pull/35/head' of https://github.com/checkout/checkout-risk-sdk-ios
+a9bcd1ffe05999d3dc94f5a1990adb90b43122ba	not-for-merge	'refs/pull/36/head' of https://github.com/checkout/checkout-risk-sdk-ios
+b70eda70b7aa17e43f54687fdb97ff4f4143db83	not-for-merge	'refs/pull/38/head' of https://github.com/checkout/checkout-risk-sdk-ios
+3e483c5959cf532e52f0e2ee949e5d72d45e3b67	not-for-merge	'refs/pull/39/head' of https://github.com/checkout/checkout-risk-sdk-ios
+c314eccde2229e88cf15e2a9a4033d263c344db3	not-for-merge	'refs/pull/4/head' of https://github.com/checkout/checkout-risk-sdk-ios
+6c11dd69a13e282930c95d26c08dc7b512a2fbad	not-for-merge	'refs/pull/40/head' of https://github.com/checkout/checkout-risk-sdk-ios
+8c558ec868dd4f513b9800a8a620dc82cdef88ca	not-for-merge	'refs/pull/40/merge' of https://github.com/checkout/checkout-risk-sdk-ios
+e2c9d74efd252a7db18ace1a337c557db4515940	not-for-merge	'refs/pull/41/head' of https://github.com/checkout/checkout-risk-sdk-ios
+de317467139e290f634680469af4e944349c4fa8	not-for-merge	'refs/pull/42/head' of https://github.com/checkout/checkout-risk-sdk-ios
+d3a9cd300e100b25c78c64a98a073f6a2b509451	not-for-merge	'refs/pull/42/merge' of https://github.com/checkout/checkout-risk-sdk-ios
+456e16d2070c4ea38e4734a70ac1974faa66c4cc	not-for-merge	'refs/pull/5/head' of https://github.com/checkout/checkout-risk-sdk-ios
+a3e979431b8520efbc4c81045a6ab750d20f2611	not-for-merge	'refs/pull/6/head' of https://github.com/checkout/checkout-risk-sdk-ios
+cbdea52a35cd7283a097675a699e65c495537436	not-for-merge	'refs/pull/7/head' of https://github.com/checkout/checkout-risk-sdk-ios
+a0b760b44db2ba5079ba632f7e14495add359937	not-for-merge	'refs/pull/8/head' of https://github.com/checkout/checkout-risk-sdk-ios
+0c8edffe5b635d88051464a50cf1cb58e13146d1	not-for-merge	'refs/pull/9/head' of https://github.com/checkout/checkout-risk-sdk-ios
+b8e800e2eb76eb3a26b0a469d314ef1a1735a822	not-for-merge	tag '0.0.1' of https://github.com/checkout/checkout-risk-sdk-ios
+5fdc751ccb5e1b374f9e021f8acf6e93f8a59984	not-for-merge	tag '0.0.2' of https://github.com/checkout/checkout-risk-sdk-ios
+92531f5feb7042e7bb5a2479ef6ae39a61ea7337	not-for-merge	tag '1.0.0' of https://github.com/checkout/checkout-risk-sdk-ios
+a2ca254843f9acc29353e2209bef322ed40f88fd	not-for-merge	tag '1.0.1' of https://github.com/checkout/checkout-risk-sdk-ios
+ac2bbb8f99e46a873a5565e44b2b822448f96e38	not-for-merge	tag '1.0.2' of https://github.com/checkout/checkout-risk-sdk-ios
+bf5223fef6df8ab548345ffd892fd89a88516ebf	not-for-merge	tag '1.0.3' of https://github.com/checkout/checkout-risk-sdk-ios
+5a132805a37f3caf1f750bfe14646caa2354605b	not-for-merge	tag '1.0.4' of https://github.com/checkout/checkout-risk-sdk-ios
+b66400373ef71a2178a4abc7855810435f076a66	not-for-merge	tag '1.1.0' of https://github.com/checkout/checkout-risk-sdk-ios
+e35ecfa7dce654203615804f1616a982591a6399	not-for-merge	tag '2.0.0' of https://github.com/checkout/checkout-risk-sdk-ios
+4823f05166dca8392a41b56b975515c7e0f1a8da	not-for-merge	tag '2.0.1' of https://github.com/checkout/checkout-risk-sdk-ios
+f28b13752c996421ef312745ab785df2dad8ad96	not-for-merge	tag '2.0.2' of https://github.com/checkout/checkout-risk-sdk-ios
+a5df46ecd4324661459faa9e9ac18d627b4d26aa	not-for-merge	tag '2.0.3' of https://github.com/checkout/checkout-risk-sdk-ios
+d9d8bcbc18ad63e3ce5bf4bb1f34ce5b3508a84b	not-for-merge	tag '3.0.0' of https://github.com/checkout/checkout-risk-sdk-ios
+b696c38479e4e4ff15a3973f4a7539f19f7485c7	not-for-merge	tag '3.0.1' of https://github.com/checkout/checkout-risk-sdk-ios
+26f77f09129e78bbab76b7c8916437e309c5051a	not-for-merge	tag '3.0.2' of https://github.com/checkout/checkout-risk-sdk-ios
+c67257e6b90090a3607e684e1a5a6631f53d25d6	not-for-merge	tag '3.0.3' of https://github.com/checkout/checkout-risk-sdk-ios
+a3435bcf50818154a3e9a15d0f554e6bfb9e20b7	not-for-merge	tag '3.0.4' of https://github.com/checkout/checkout-risk-sdk-ios
+37ad7910ad2360e59385b1e7674bfb392297aef8	not-for-merge	tag '4.0.0' of https://github.com/checkout/checkout-risk-sdk-ios
+40926a8f73077a42cd4984cb4849017377fdc6d9	not-for-merge	tag '4.0.1' of https://github.com/checkout/checkout-risk-sdk-ios
+7f944921720dc879b63ac3bb51f56dd6eb50919c	not-for-merge	tag '4.0.2' of https://github.com/checkout/checkout-risk-sdk-ios

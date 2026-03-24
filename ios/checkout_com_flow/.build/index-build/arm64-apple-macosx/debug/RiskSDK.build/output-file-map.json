@@ -1,0 +1,89 @@
+{
+  "": {
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/master.swiftdeps"
+  },
+  "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/checkouts/checkout-risk-sdk-ios/Sources/Risk/Logging/Constants.swift": {
+    "dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/Constants.d",
+    "object": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/Constants.swift.o",
+    "swiftmodule": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/Constants~partial.swiftmodule",
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/Constants.swiftdeps",
+    "diagnostics": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/Constants.dia"
+  },
+  "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/checkouts/checkout-risk-sdk-ios/Sources/Risk/Logging/LoggerService.swift": {
+    "dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/LoggerService.d",
+    "object": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/LoggerService.swift.o",
+    "swiftmodule": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/LoggerService~partial.swiftmodule",
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/LoggerService.swiftdeps",
+    "diagnostics": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/LoggerService.dia"
+  },
+  "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/checkouts/checkout-risk-sdk-ios/Sources/Risk/Models/PublishRiskData.swift": {
+    "dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/PublishRiskData.d",
+    "object": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/PublishRiskData.swift.o",
+    "swiftmodule": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/PublishRiskData~partial.swiftmodule",
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/PublishRiskData.swiftdeps",
+    "diagnostics": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/PublishRiskData.dia"
+  },
+  "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/checkouts/checkout-risk-sdk-ios/Sources/Risk/Models/RiskIntegrationType.swift": {
+    "dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskIntegrationType.d",
+    "object": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskIntegrationType.swift.o",
+    "swiftmodule": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskIntegrationType~partial.swiftmodule",
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskIntegrationType.swiftdeps",
+    "diagnostics": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskIntegrationType.dia"
+  },
+  "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/checkouts/checkout-risk-sdk-ios/Sources/Risk/Models/RiskSDKInternalConfig.swift": {
+    "dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskSDKInternalConfig.d",
+    "object": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskSDKInternalConfig.swift.o",
+    "swiftmodule": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskSDKInternalConfig~partial.swiftmodule",
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskSDKInternalConfig.swiftdeps",
+    "diagnostics": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskSDKInternalConfig.dia"
+  },
+  "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/checkouts/checkout-risk-sdk-ios/Sources/Risk/Models/SourceType.swift": {
+    "dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/SourceType.d",
+    "object": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/SourceType.swift.o",
+    "swiftmodule": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/SourceType~partial.swiftmodule",
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/SourceType.swiftdeps",
+    "diagnostics": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/SourceType.dia"
+  },
+  "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/checkouts/checkout-risk-sdk-ios/Sources/Risk/Risk.swift": {
+    "dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/Risk.d",
+    "object": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/Risk.swift.o",
+    "swiftmodule": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/Risk~partial.swiftmodule",
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/Risk.swiftdeps",
+    "diagnostics": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/Risk.dia"
+  },
+  "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/checkouts/checkout-risk-sdk-ios/Sources/Risk/RiskSDKConfig.swift": {
+    "dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskSDKConfig.d",
+    "object": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskSDKConfig.swift.o",
+    "swiftmodule": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskSDKConfig~partial.swiftmodule",
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskSDKConfig.swiftdeps",
+    "diagnostics": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskSDKConfig.dia"
+  },
+  "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/checkouts/checkout-risk-sdk-ios/Sources/Risk/Services/APIService.swift": {
+    "dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/APIService.d",
+    "object": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/APIService.swift.o",
+    "swiftmodule": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/APIService~partial.swiftmodule",
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/APIService.swiftdeps",
+    "diagnostics": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/APIService.dia"
+  },
+  "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/checkouts/checkout-risk-sdk-ios/Sources/Risk/Services/DeviceDataService.swift": {
+    "dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/DeviceDataService.d",
+    "object": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/DeviceDataService.swift.o",
+    "swiftmodule": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/DeviceDataService~partial.swiftmodule",
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/DeviceDataService.swiftdeps",
+    "diagnostics": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/DeviceDataService.dia"
+  },
+  "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/checkouts/checkout-risk-sdk-ios/Sources/Risk/Services/FingerprintService.swift": {
+    "dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/FingerprintService.d",
+    "object": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/FingerprintService.swift.o",
+    "swiftmodule": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/FingerprintService~partial.swiftmodule",
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/FingerprintService.swiftdeps",
+    "diagnostics": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/FingerprintService.dia"
+  },
+  "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/checkouts/checkout-risk-sdk-ios/Sources/Risk/Services/RiskError.swift": {
+    "dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskError.d",
+    "object": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskError.swift.o",
+    "swiftmodule": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskError~partial.swiftmodule",
+    "swift-dependencies": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskError.swiftdeps",
+    "diagnostics": "/Users/antoninotesta/Development/checkout_flutter_plugin/ios/checkout_com_flow/.build/index-build/arm64-apple-macosx/debug/RiskSDK.build/RiskError.dia"
+  }
+}

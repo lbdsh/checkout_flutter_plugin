@@ -76,10 +76,13 @@ class CheckoutFlowPlatformView(
                 )
             )
 
+            val componentType = params["componentType"] as? String ?: "flow"
+
             CoroutineScope(Dispatchers.Main).launch {
                 try {
                     val checkoutComponents = CheckoutComponentsFactory(config).create()
-                    val flow = checkoutComponents.create(ComponentName.Flow)
+                    val componentName = if (componentType == "card") ComponentName.Card else ComponentName.Flow
+                    val flow = checkoutComponents.create(componentName)
 
                     flow.provideView(containerView)
                     invokeOnMain("onReady", null)
