@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'checkout_com_flow'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'Flutter plugin for Checkout.com Flow payment components.'
   s.description      = 'Integrates Checkout.com Flow for accepting payments on iOS and Android.'
   s.homepage         = 'https://github.com/lbdsh/checkout_flutter_plugin'
@@ -16,5 +16,9 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',
     'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES',
+    'SWIFT_ENABLE_EXPLICIT_MODULES' => 'NO',
+  }
+  s.user_target_xcconfig = {
+    'SWIFT_ENABLE_EXPLICIT_MODULES' => 'NO',
   }
 end
