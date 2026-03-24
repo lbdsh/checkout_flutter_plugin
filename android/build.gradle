@@ -46,4 +46,7 @@ android {
 dependencies {
     implementation 'com.checkout:checkout-android-components:1.+'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.7'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.8.7'
+    implementation 'androidx.savedstate:savedstate:1.2.1'
 }
