@@ -74,7 +74,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  checkout_com_flow: ^0.1.0
+  checkout_com_flow: ^0.1.1
 ```
 
 Then run:

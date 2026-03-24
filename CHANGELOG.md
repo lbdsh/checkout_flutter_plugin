@@ -1,3 +1,10 @@
+## 0.1.1
+
+- Renamed package from `checkout_flow` to `checkout_com_flow`.
+- Added disclaimer and liability sections to README.
+- Added sponsors section.
+- Updated repository links to GitHub.
+
 ## 0.1.0
 
 - Initial release.
