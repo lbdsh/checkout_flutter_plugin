@@ -28,6 +28,23 @@ class CheckoutFlowError extends CheckoutFlowResult {
   String toString() => 'CheckoutFlowError(errorCode: $errorCode, message: $message)';
 }
 
+/// Card was tokenized successfully (tokenOnly mode).
+class CheckoutFlowTokenized extends CheckoutFlowResult {
+  /// The card token returned by Checkout.com.
+  final String token;
+
+  /// The token type (e.g. "card").
+  final String? type;
+
+  /// The preferred card scheme, if available.
+  final String? preferredScheme;
+
+  const CheckoutFlowTokenized({required this.token, this.type, this.preferredScheme});
+
+  @override
+  String toString() => 'CheckoutFlowTokenized(token: $token, type: $type)';
+}
+
 /// Payment was cancelled by the user.
 class CheckoutFlowCancelled extends CheckoutFlowResult {
   const CheckoutFlowCancelled();

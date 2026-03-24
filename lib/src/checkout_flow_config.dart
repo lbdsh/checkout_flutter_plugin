@@ -37,6 +37,11 @@ class CheckoutFlowConfig {
   /// If null, the SDK uses the device locale.
   final String? locale;
 
+  /// When true, the Pay button only tokenizes the card and returns
+  /// a [CheckoutFlowTokenized] result instead of processing the payment.
+  /// Use this to get the card token and process payment via your own backend.
+  final bool tokenOnly;
+
   const CheckoutFlowConfig({
     required this.publicKey,
     required this.paymentSessionId,
@@ -46,6 +51,7 @@ class CheckoutFlowConfig {
     this.componentType = CheckoutComponentType.flow,
     this.theme,
     this.locale,
+    this.tokenOnly = false,
   });
 
   /// Converts this configuration to a map for platform channel serialization.
@@ -58,6 +64,7 @@ class CheckoutFlowConfig {
       'paymentSessionSecret': paymentSessionSecret,
       'environment': environment.name,
       'componentType': componentType.name,
+      'tokenOnly': tokenOnly,
       if (theme != null) 'theme': theme!.toMap(),
       if (locale != null) 'locale': locale,
     };

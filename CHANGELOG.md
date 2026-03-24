@@ -1,3 +1,10 @@
+## 1.4.0
+
+- **New:** `tokenOnly` mode — set `tokenOnly: true` in `CheckoutFlowConfig` to tokenize the card without processing payment. Returns `CheckoutFlowTokenized` with the card token for server-side payment processing.
+- **New:** `CheckoutFlowTokenized` result class with `token`, `type`, and `preferredScheme` fields.
+- **iOS:** Uses `PaymentButtonAction.tokenization` and `onTokenized` callback when `tokenOnly` is enabled.
+- **iOS/Android:** `tokenOnly` flag passed via platform channel.
+
 ## 1.3.1
 
 - **Fix:** iOS height tracking now uses `sizeThatFits` with timer polling instead of KVO, reliably detecting SwiftUI content size changes (e.g. validation errors).

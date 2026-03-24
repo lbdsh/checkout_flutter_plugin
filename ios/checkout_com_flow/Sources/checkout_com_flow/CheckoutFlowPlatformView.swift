@@ -46,6 +46,7 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
             : .sandbox
 
         let componentType = args["componentType"] as? String ?? "flow"
+        let tokenOnly = args["tokenOnly"] as? Bool ?? false
         let locale = args["locale"] as? String
 
         // Build DesignTokens from theme map
@@ -65,6 +66,16 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
                     appearance: designTokens,
                     locale: locale,
                     callbacks: .init(
+                        onTokenized: tokenOnly ? { [weak self] tokenResult in
+                            DispatchQueue.main.async {
+                                self?.channel.invokeMethod("onTokenized", arguments: [
+                                    "token": tokenResult.data.token,
+                                    "type": "\(tokenResult.type)",
+                                    "preferredScheme": tokenResult.preferredScheme as Any,
+                                ])
+                            }
+                            return .accepted
+                        } : nil,
                         onSuccess: { [weak self] _, paymentID in
                             DispatchQueue.main.async {
                                 self?.channel.invokeMethod("onSuccess", arguments: [
@@ -87,8 +98,9 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
 
                 let component: any CheckoutComponents.Describable & CheckoutComponents.Renderable & CheckoutComponents.Submittable & CheckoutComponents.Tokenizable
 
+                let buttonAction: CheckoutComponents.PaymentButtonAction = tokenOnly ? .tokenization : .payment
                 if componentType == "card" {
-                    component = try checkoutComponents.create(.card(showPayButton: true))
+                    component = try checkoutComponents.create(.card(showPayButton: true, paymentButtonAction: buttonAction))
                 } else {
                     component = try checkoutComponents.create(.flow())
                 }

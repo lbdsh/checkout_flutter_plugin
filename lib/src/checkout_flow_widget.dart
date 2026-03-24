@@ -99,6 +99,11 @@ class _CheckoutFlowWidgetState extends State<CheckoutFlowWidget> {
         if (height != null && height > 0 && mounted) {
           setState(() => _contentHeight = height);
         }
+      case 'onTokenized':
+        final token = args?['token'] as String? ?? '';
+        final type = args?['type'] as String?;
+        final preferredScheme = args?['preferredScheme'] as String?;
+        widget.onResult(CheckoutFlowTokenized(token: token, type: type, preferredScheme: preferredScheme));
       case 'onSuccess':
         final paymentId = args?['paymentId'] as String? ?? '';
         widget.onResult(CheckoutFlowSuccess(paymentId: paymentId));
