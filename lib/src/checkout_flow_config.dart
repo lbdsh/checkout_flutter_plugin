@@ -9,7 +9,8 @@ class CheckoutFlowConfig {
   final String paymentSessionId;
 
   /// The payment session token returned from the Payment Sessions API.
-  final String paymentSessionToken;
+  /// No longer required by native SDKs v1.6+. Kept for backwards compatibility.
+  final String? paymentSessionToken;
 
   /// The payment session secret returned from the Payment Sessions API.
   final String paymentSessionSecret;
@@ -20,7 +21,7 @@ class CheckoutFlowConfig {
   const CheckoutFlowConfig({
     required this.publicKey,
     required this.paymentSessionId,
-    required this.paymentSessionToken,
+    this.paymentSessionToken,
     required this.paymentSessionSecret,
     this.environment = CheckoutFlowEnvironment.sandbox,
   });
@@ -30,7 +31,8 @@ class CheckoutFlowConfig {
     return {
       'publicKey': publicKey,
       'paymentSessionId': paymentSessionId,
-      'paymentSessionToken': paymentSessionToken,
+      if (paymentSessionToken != null)
+        'paymentSessionToken': paymentSessionToken,
       'paymentSessionSecret': paymentSessionSecret,
       'environment': environment.name,
     };

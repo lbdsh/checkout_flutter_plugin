@@ -17,6 +17,8 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.fpregistry.io/releases' }
     }
 }
 
@@ -43,4 +45,5 @@ android {
 
 dependencies {
     implementation 'com.checkout:checkout-android-components:1.+'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
 }

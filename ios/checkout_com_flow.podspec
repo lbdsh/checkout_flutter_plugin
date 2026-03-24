@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'checkout_com_flow'
-  s.version          = '0.1.1'
+  s.version          = '0.2.0'
   s.summary          = 'Flutter plugin for Checkout.com Flow payment components.'
   s.description      = 'Integrates Checkout.com Flow for accepting payments on iOS and Android.'
   s.homepage         = 'https://github.com/lbdsh/checkout_flutter_plugin'
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.source           = { :path => '.' }
   s.source_files     = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'CheckoutComponentsSDK'
-  s.platform         = :ios, '13.0'
+  s.vendored_frameworks = 'CheckoutComponentsSDK.xcframework'
+  s.platform         = :ios, '15.0'
   s.swift_version    = '5.0'
 end

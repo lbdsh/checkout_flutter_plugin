@@ -6,15 +6,18 @@ import android.os.Looper
 import android.view.View
 import android.widget.FrameLayout
 import com.checkout.components.core.CheckoutComponentsFactory
-import com.checkout.components.core.ComponentName
-import com.checkout.components.core.CheckoutComponentConfiguration
-import com.checkout.components.core.PaymentSessionResponse
-import com.checkout.components.core.Environment
-import com.checkout.components.core.ComponentCallback
-import com.checkout.components.core.error.CheckoutError
+import com.checkout.components.interfaces.model.ComponentName
+import com.checkout.components.interfaces.component.CheckoutComponentConfiguration
+import com.checkout.components.interfaces.model.PaymentSessionResponse
+import com.checkout.components.interfaces.Environment
+import com.checkout.components.interfaces.component.ComponentCallback
+import com.checkout.components.interfaces.error.CheckoutError
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class CheckoutFlowPlatformView(
     private val context: Context,
@@ -43,8 +46,6 @@ class CheckoutFlowPlatformView(
                 ?: return invokeOnMain("onError", mapOf("errorCode" to "INVALID_PARAMS", "message" to "Missing publicKey"))
             val paymentSessionId = params["paymentSessionId"] as? String
                 ?: return invokeOnMain("onError", mapOf("errorCode" to "INVALID_PARAMS", "message" to "Missing paymentSessionId"))
-            val paymentSessionToken = params["paymentSessionToken"] as? String
-                ?: return invokeOnMain("onError", mapOf("errorCode" to "INVALID_PARAMS", "message" to "Missing paymentSessionToken"))
             val paymentSessionSecret = params["paymentSessionSecret"] as? String
                 ?: return invokeOnMain("onError", mapOf("errorCode" to "INVALID_PARAMS", "message" to "Missing paymentSessionSecret"))
             val envName = params["environment"] as? String ?: "sandbox"
@@ -56,37 +57,39 @@ class CheckoutFlowPlatformView(
 
             val config = CheckoutComponentConfiguration(
                 context = context,
-                paymentSession = PaymentSessionResponse(
-                    id = paymentSessionId,
-                    paymentSessionToken = paymentSessionToken,
-                    paymentSessionSecret = paymentSessionSecret
-                ),
                 publicKey = publicKey,
                 environment = environment,
+                paymentSession = PaymentSessionResponse(
+                    id = paymentSessionId,
+                    secret = paymentSessionSecret
+                ),
                 componentCallback = ComponentCallback(
                     onSuccess = { _, paymentId ->
                         invokeOnMain("onSuccess", mapOf("paymentId" to paymentId))
+                    },
+                    onError = { _, error ->
+                        invokeOnMain("onError", mapOf(
+                            "errorCode" to "PAYMENT_ERROR",
+                            "message" to (error.message ?: "Payment error")
+                        ))
                     }
                 )
             )
 
-            val checkoutComponents = CheckoutComponentsFactory(config).create()
-            val flow = checkoutComponents.create(ComponentName.Flow)
+            CoroutineScope(Dispatchers.Main).launch {
+                try {
+                    val checkoutComponents = CheckoutComponentsFactory(config).create()
+                    val flow = checkoutComponents.create(ComponentName.Flow)
 
-            if (flow.isAvailable) {
-                flow.provideView(containerView)
-                invokeOnMain("onReady", null)
-            } else {
-                invokeOnMain(
-                    "onError",
-                    mapOf("errorCode" to "UNAVAILABLE", "message" to "Flow component is not available")
-                )
+                    flow.provideView(containerView)
+                    invokeOnMain("onReady", null)
+                } catch (e: Exception) {
+                    invokeOnMain(
+                        "onError",
+                        mapOf("errorCode" to "INIT_ERROR", "message" to (e.message ?: "Checkout initialization error"))
+                    )
+                }
             }
-        } catch (e: CheckoutError) {
-            invokeOnMain(
-                "onError",
-                mapOf("errorCode" to "INIT_ERROR", "message" to (e.message ?: "Checkout initialization error"))
-            )
         } catch (e: Exception) {
             invokeOnMain(
                 "onError",

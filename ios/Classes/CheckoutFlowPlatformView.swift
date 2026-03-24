@@ -30,7 +30,6 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
     private func setupFlow(args: [String: Any]) {
         guard let publicKey = args["publicKey"] as? String,
               let paymentSessionId = args["paymentSessionId"] as? String,
-              let paymentSessionToken = args["paymentSessionToken"] as? String,
               let paymentSessionSecret = args["paymentSessionSecret"] as? String else {
             channel.invokeMethod("onError", arguments: [
                 "errorCode": "INVALID_PARAMS",
@@ -44,9 +43,8 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
             ? .production
             : .sandbox
 
-        let paymentSession = CheckoutComponents.PaymentSessionResponse(
+        let paymentSession = PaymentSession(
             id: paymentSessionId,
-            paymentSessionToken: paymentSessionToken,
             paymentSessionSecret: paymentSessionSecret
         )
 
@@ -79,8 +77,6 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
                 let flowComponent = try checkoutComponents.create(.flow())
 
                 if flowComponent.isAvailable {
-                    // The SDK provides a SwiftUI view via render().
-                    // Wrap it in a UIHostingController to embed in UIKit.
                     let swiftUIView = flowComponent.render()
                     let hosting = UIHostingController(rootView: swiftUIView)
                     self.hostingController = hosting
