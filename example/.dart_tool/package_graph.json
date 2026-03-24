@@ -1,13 +1,13 @@
 {
   "roots": [
-    "checkout_flow_example"
+    "checkout_com_flow_example"
   ],
   "packages": [
     {
-      "name": "checkout_flow_example",
+      "name": "checkout_com_flow_example",
       "version": "0.0.0",
       "dependencies": [
-        "checkout_flow",
+        "checkout_com_flow",
         "flutter"
       ],
       "devDependencies": [
@@ -41,7 +41,7 @@
       ]
     },
     {
-      "name": "checkout_flow",
+      "name": "checkout_com_flow",
       "version": "0.1.0",
       "dependencies": [
         "flutter"

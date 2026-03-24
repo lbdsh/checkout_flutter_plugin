@@ -1,4 +1,4 @@
-# checkout_flow
+# checkout_com_flow
 
 A Flutter plugin that integrates [Checkout.com Flow](https://www.checkout.com/docs/payments/accept-payments) payment components for Android and iOS.
 
@@ -74,7 +74,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  checkout_flow: ^0.1.0
+  checkout_com_flow: ^0.1.0
 ```
 
 Then run:
@@ -131,7 +131,7 @@ The response contains `id`, `paymentSessionToken`, and `paymentSessionSecret`.
 ### 2. Render the Flow widget
 
 ```dart
-import 'package:checkout_flow/checkout_flow.dart';
+import 'package:checkout_com_flow/checkout_com_flow.dart';
 
 CheckoutFlowWidget(
   config: CheckoutFlowConfig(

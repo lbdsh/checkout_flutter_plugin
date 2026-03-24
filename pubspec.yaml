@@ -1,4 +1,4 @@
-name: checkout_flow
+name: checkout_com_flow
 description: >
   Flutter plugin for Checkout.com Flow payment components.
   Embeds the native Flow UI on Android and iOS to accept card payments,

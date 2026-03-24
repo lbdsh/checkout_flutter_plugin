@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:checkout_flow/checkout_flow.dart';
+import 'package:checkout_com_flow/checkout_com_flow.dart';
 
 void main() {
   runApp(const MyApp());

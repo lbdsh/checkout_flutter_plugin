@@ -20,7 +20,7 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "checkout_flow",
+      "name": "checkout_com_flow",
       "rootUri": "../../",
       "packageUri": "lib/",
       "languageVersion": "3.0"
@@ -164,7 +164,7 @@
       "languageVersion": "3.5"
     },
     {
-      "name": "checkout_flow_example",
+      "name": "checkout_com_flow_example",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.0"
