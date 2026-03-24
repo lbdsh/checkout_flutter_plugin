@@ -12,6 +12,7 @@ import com.checkout.components.interfaces.model.PaymentSessionResponse
 import com.checkout.components.interfaces.Environment
 import com.checkout.components.interfaces.component.ComponentCallback
 import com.checkout.components.interfaces.error.CheckoutError
+import com.checkout.components.interfaces.localisation.Locale as CkoLocale
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
@@ -55,13 +56,36 @@ class CheckoutFlowPlatformView(
                 else -> Environment.SANDBOX
             }
 
-            val locale = params["locale"] as? String
+            val localeStr = params["locale"] as? String
+            val ckoLocale: CkoLocale? = when (localeStr?.take(2)?.lowercase()) {
+                "it" -> CkoLocale.It
+                "en" -> CkoLocale.En
+                "de" -> CkoLocale.De
+                "fr" -> CkoLocale.Fr
+                "es" -> CkoLocale.Es
+                "pt" -> CkoLocale.Pt
+                "nl" -> CkoLocale.Nl
+                "ar" -> CkoLocale.Ar
+                "da" -> CkoLocale.Da
+                "el" -> CkoLocale.El
+                "fi" -> CkoLocale.Fi
+                "hi" -> CkoLocale.Hi
+                "id" -> CkoLocale.Id
+                "ja" -> CkoLocale.Ja
+                "ms" -> CkoLocale.Ms
+                "nb" -> CkoLocale.Nb
+                "sv" -> CkoLocale.Sv
+                "th" -> CkoLocale.Th
+                "vi" -> CkoLocale.Vi
+                "zh" -> CkoLocale.Zh
+                else -> null
+            }
 
             val config = CheckoutComponentConfiguration(
                 context = context,
                 publicKey = publicKey,
                 environment = environment,
-                locale = locale,
+                locale = ckoLocale,
                 paymentSession = PaymentSessionResponse(
                     id = paymentSessionId,
                     secret = paymentSessionSecret
@@ -79,13 +103,10 @@ class CheckoutFlowPlatformView(
                 )
             )
 
-            val componentType = params["componentType"] as? String ?: "flow"
-
             CoroutineScope(Dispatchers.Main).launch {
                 try {
                     val checkoutComponents = CheckoutComponentsFactory(config).create()
-                    val componentName = if (componentType == "card") ComponentName.Card else ComponentName.Flow
-                    val flow = checkoutComponents.create(componentName)
+                    val flow = checkoutComponents.create(ComponentName.Flow)
 
                     flow.provideView(containerView)
                     invokeOnMain("onReady", null)
