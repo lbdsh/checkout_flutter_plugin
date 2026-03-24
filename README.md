@@ -221,6 +221,15 @@ Ensure your deployment target is at least iOS 13.0 in your Xcode project setting
 
 Contributions are welcome! Please note that this is a community project — it is not maintained by Checkout.com. Before submitting a pull request, ensure your changes work on both Android and iOS.
 
+## Sponsors
+
+This project is made possible thanks to the support of:
+
+- **[LBD](https://www.lbdsh.com)** — Digital solutions & software development
+- **[Transfeero](https://www.transfeero.com)** — Global transfer and mobility platform
+
+Interested in sponsoring this project? [Get in touch](https://github.com/lbdsh/checkout_flutter_plugin/issues).
+
 ## License
 
 MIT License. See [LICENSE](LICENSE) for details.
