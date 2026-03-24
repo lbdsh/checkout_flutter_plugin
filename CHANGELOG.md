@@ -1,3 +1,9 @@
+## 0.3.1
+
+- **iOS:** Fixed Xcode 26 build with `BUILD_LIBRARY_FOR_DISTRIBUTION` xcconfig.
+- **iOS:** Added SPM `Package.swift` for Swift Package Manager compatibility.
+- **iOS:** Source files moved to SPM-compatible directory structure.
+
 ## 0.3.0
 
 - **Breaking:** iOS now uses Swift Package Manager (SPM) instead of vendored xcframework for `CheckoutComponentsSDK`. This fixes build issues with Xcode 26 and explicit module builds.
