@@ -1,3 +1,14 @@
+## 1.3.0
+
+- **New:** Dynamic height — widget auto-resizes when content changes (e.g. validation errors appear), growing downward with smooth animation.
+- **New:** `onHeightChanged` method channel from native iOS to report content height changes.
+- **Dart:** Widget now uses `AnimatedSize` for smooth height transitions instead of fixed `SizedBox`.
+
+## 1.2.0
+
+- **New:** Locale support — pass `locale` parameter (e.g. `"it-IT"`, `"de-DE"`) to display the payment form in the user's language.
+- **iOS/Android:** Locale forwarded to native SDK `Configuration`.
+
 ## 1.1.0
 
 - **New:** Full theme customization via `CheckoutFlowTheme` — supports all 12 color tokens (`actionColor`, `backgroundColor`, `formBackgroundColor`, `primaryColor`, etc.) and border radius for buttons and form fields.

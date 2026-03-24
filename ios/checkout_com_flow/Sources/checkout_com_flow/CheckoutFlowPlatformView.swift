@@ -7,6 +7,8 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
     private let containerView: UIView
     private let channel: FlutterMethodChannel
     private var hostingController: UIViewController?
+    private var heightObservation: NSKeyValueObservation?
+    private var lastReportedHeight: CGFloat = 0
 
     init(
         frame: CGRect,
@@ -45,7 +47,6 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
 
         let componentType = args["componentType"] as? String ?? "flow"
         let locale = args["locale"] as? String
-        print("[CHECKOUT_FLOW_IOS] locale received: \(locale ?? "nil")")
 
         // Build DesignTokens from theme map
         let designTokens = Self.buildDesignTokens(from: args["theme"] as? [String: Any])
@@ -106,6 +107,25 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
                         hosting.view.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor),
                         hosting.view.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor),
                     ])
+
+                    // Observe content size changes and report to Flutter
+                    self.heightObservation = hosting.view.observe(\.bounds, options: [.new]) { [weak self] view, _ in
+                        guard let self = self else { return }
+                        let fittingSize = view.systemLayoutSizeFitting(
+                            CGSize(width: view.bounds.width, height: UIView.layoutFittingCompressedSize.height),
+                            withHorizontalFittingPriority: .required,
+                            verticalFittingPriority: .fittingSizeLevel
+                        )
+                        let newHeight = max(fittingSize.height, view.intrinsicContentSize.height)
+                        if newHeight > 0 && abs(newHeight - self.lastReportedHeight) > 1 {
+                            self.lastReportedHeight = newHeight
+                            DispatchQueue.main.async {
+                                self.channel.invokeMethod("onHeightChanged", arguments: [
+                                    "height": newHeight
+                                ])
+                            }
+                        }
+                    }
 
                     self.channel.invokeMethod("onReady", arguments: nil)
                 } else {

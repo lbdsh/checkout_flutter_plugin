@@ -43,14 +43,20 @@ class _CheckoutFlowWidgetState extends State<CheckoutFlowWidget> {
   static const String _viewType = 'checkout_flow_view';
   MethodChannel? _channel;
   bool _isReady = false;
+  double? _contentHeight;
 
   @override
   Widget build(BuildContext context) {
     final creationParams = widget.config.toMap();
+    final height = _contentHeight ?? widget.height ?? 400;
 
-    return SizedBox(
-      height: widget.height ?? 400,
-      child: _buildPlatformView(creationParams),
+    return AnimatedSize(
+      duration: const Duration(milliseconds: 200),
+      alignment: Alignment.topCenter,
+      child: SizedBox(
+        height: height,
+        child: _buildPlatformView(creationParams),
+      ),
     );
   }
 
@@ -87,6 +93,11 @@ class _CheckoutFlowWidgetState extends State<CheckoutFlowWidget> {
         if (!_isReady) {
           _isReady = true;
           widget.onReady?.call();
+        }
+      case 'onHeightChanged':
+        final height = (args?['height'] as num?)?.toDouble();
+        if (height != null && height > 0 && mounted) {
+          setState(() => _contentHeight = height);
         }
       case 'onSuccess':
         final paymentId = args?['paymentId'] as String? ?? '';
