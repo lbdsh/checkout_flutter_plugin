@@ -4,10 +4,9 @@ description: >
   Embeds the native Flow UI on Android and iOS to accept card payments,
   Apple Pay, Google Pay, and more.
 version: 0.1.0
-homepage: https://www.checkout.com/docs/payments/accept-payments
-# TODO: Replace with your actual repository URL before publishing
-# repository: https://github.com/YOUR_USERNAME/checkout_flow
-# issue_tracker: https://github.com/YOUR_USERNAME/checkout_flow/issues
+homepage: https://github.com/lbdsh/checkout_flutter_plugin
+repository: https://github.com/lbdsh/checkout_flutter_plugin
+issue_tracker: https://github.com/lbdsh/checkout_flutter_plugin/issues
 
 topics:
   - payments

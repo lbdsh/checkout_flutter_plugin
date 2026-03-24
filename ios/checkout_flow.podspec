@@ -3,9 +3,9 @@ Pod::Spec.new do |s|
   s.version          = '0.1.0'
   s.summary          = 'Flutter plugin for Checkout.com Flow payment components.'
   s.description      = 'Integrates Checkout.com Flow for accepting payments on iOS and Android.'
-  s.homepage         = 'https://checkout.com'
+  s.homepage         = 'https://github.com/lbdsh/checkout_flutter_plugin'
   s.license          = { :type => 'MIT', :file => '../LICENSE' }
-  s.author           = { 'Community' => '' }
+  s.author           = { 'lbdsh.com' => 'antonino@lbdsh.com' }
   s.source           = { :path => '.' }
   s.source_files     = 'Classes/**/*'
   s.dependency 'Flutter'
