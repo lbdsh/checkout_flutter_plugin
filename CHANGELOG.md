@@ -1,3 +1,10 @@
+## 0.3.0
+
+- **Breaking:** iOS now uses Swift Package Manager (SPM) instead of vendored xcframework for `CheckoutComponentsSDK`. This fixes build issues with Xcode 26 and explicit module builds.
+- **iOS:** Removed vendored `CheckoutComponentsSDK.xcframework`. The SDK is now resolved via SPM from `https://github.com/checkout/checkout-ios-components`.
+- **iOS:** Source files moved to SPM-compatible directory structure (`checkout_com_flow/Sources/checkout_com_flow/`).
+- Requires Flutter 3.35+ with Swift Package Manager support enabled.
+
 ## 0.2.0
 
 - **Breaking:** Updated to Checkout.com Components SDK v1.6.x (iOS and Android).
