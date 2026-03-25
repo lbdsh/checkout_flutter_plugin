@@ -213,7 +213,7 @@ class CheckoutFlowPlatformView(
                             "preferredScheme" to (result.preferredScheme ?: "")
                         ))
                         // In tokenOnly mode, reject to prevent the SDK from processing the payment
-                        if (tokenOnly) CallbackResult.Rejected("Token obtained") else CallbackResult.Accepted
+                        if (tokenOnly) CallbackResult.Rejected("") else CallbackResult.Accepted
                     }
                 )
             )
