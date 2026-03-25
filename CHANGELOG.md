@@ -1,3 +1,22 @@
+## 2.0.0
+
+- **New:** `tokenOnly` mode — set `tokenOnly: true` to tokenize the card without processing payment. Returns `CheckoutFlowTokenized` with the card token for server-side payment processing.
+- **New:** `CheckoutFlowTokenized` result class with `token`, `type`, and `preferredScheme` fields.
+- **New:** `locale` parameter — pass locale string (e.g. `"it"`, `"de"`, `"fr"`) to display the payment form in the user's language.
+- **New:** Full theme customization via `CheckoutFlowTheme` — supports all 12 color tokens and border radius for buttons and form fields. Works on both iOS and Android.
+- **New:** Component type selection — `CheckoutComponentType.card` for card-only fields (no radio selector), `CheckoutComponentType.flow` for full payment method selector.
+- **New:** Built-in skeleton loading animation while the native component initializes.
+- **Android:** Full Jetpack Compose integration with proper `LifecycleOwner`, `SavedStateRegistryOwner`, and `ViewModelStoreOwner` bridge for Flutter platform views.
+- **Android:** `PaymentButtonAction.TOKENIZE` support for `tokenOnly` mode — rejects payment after token is captured.
+- **Android:** Dynamic height reporting via `ViewTreeObserver.OnGlobalLayoutListener`.
+- **Android:** Theme colors correctly converted to Compose Color format (ARGB int, not packed ULong).
+- **Android:** Kotlin 2.3+ compatibility with `compilerOptions` DSL.
+- **iOS:** Uses `PaymentButtonAction.tokenization` and `onTokenized` callback for `tokenOnly` mode.
+- **iOS:** Dynamic height via `sizeThatFits` polling with timer.
+- **iOS:** SPM dependency on `checkout-ios-components` for native SDK.
+- **Breaking:** Minimum Kotlin version for Android consumers is now 2.1.21+.
+- **Breaking:** Android `checkout-android-components` dependency updated to 1.6.x.
+
 ## 1.4.0
 
 - **New:** `tokenOnly` mode — set `tokenOnly: true` in `CheckoutFlowConfig` to tokenize the card without processing payment. Returns `CheckoutFlowTokenized` with the card token for server-side payment processing.

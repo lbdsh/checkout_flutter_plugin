@@ -43,12 +43,16 @@ For production payment processing, always refer to the [official Checkout.com do
 ## Features
 
 - Native Checkout.com Flow UI embedded as a Flutter widget
-- Supports Android (Jetpack Views) and iOS (SwiftUI via UIKit bridge)
+- Supports Android (Jetpack Compose) and iOS (SwiftUI via UIKit bridge)
 - Sandbox and Production environments
-- Typed result callbacks (success, error, cancelled)
+- Typed result callbacks (success, error, cancelled, **tokenized**)
 - Apple Pay and Google Pay support (managed by Flow)
-- **Full theme customization** — colors, border radius, dark mode support
+- **Token-only mode** — tokenize the card without processing payment, for server-side payment control
+- **Full theme customization** — all 12 color tokens, border radius, dark mode support (iOS & Android)
 - **Component type selection** — full Flow or card-only mode
+- **Locale support** — display form in user's language (it, de, fr, es, en, etc.)
+- **Skeleton loading** — built-in loading animation while native component initializes
+- **Dynamic height** — widget auto-resizes when validation errors appear
 - iOS uses Swift Package Manager for the native Checkout.com SDK dependency
 
 ## Requirements
@@ -77,7 +81,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  checkout_com_flow: ^1.1.0
+  checkout_com_flow: ^2.0.0
 ```
 
 Then run:
@@ -206,7 +210,49 @@ CheckoutFlowWidget(
 )
 ```
 
-### 5. Component type
+### 5. Token-only mode
+
+Tokenize the card without processing payment — useful when you want to handle payment processing on your server:
+
+```dart
+CheckoutFlowWidget(
+  config: CheckoutFlowConfig(
+    publicKey: 'pk_sbox_xxx',
+    paymentSessionId: 'ps_xxx',
+    paymentSessionSecret: 'secret_xxx',
+    componentType: CheckoutComponentType.card,
+    tokenOnly: true,
+  ),
+  onResult: (result) {
+    if (result is CheckoutFlowTokenized) {
+      // Send token to your server for payment processing
+      print('Token: ${result.token}');
+      print('Type: ${result.type}');
+      print('Scheme: ${result.preferredScheme}');
+    }
+  },
+)
+```
+
+### 6. Locale support
+
+Display the payment form in the user's language:
+
+```dart
+CheckoutFlowWidget(
+  config: CheckoutFlowConfig(
+    publicKey: 'pk_sbox_xxx',
+    paymentSessionId: 'ps_xxx',
+    paymentSessionSecret: 'secret_xxx',
+    locale: 'it', // Italian
+  ),
+  onResult: _handleResult,
+)
+```
+
+Supported locales: `en`, `it`, `de`, `fr`, `es`, `pt`, `nl`, `ar`, `da`, `el`, `fi`, `hi`, `id`, `ja`, `ms`, `nb`, `sv`, `th`, `vi`, `zh`.
+
+### 7. Component type
 
 Choose between the full Flow component or card-only mode:
 
@@ -228,13 +274,14 @@ CheckoutFlowWidget(
 | `CheckoutComponentType.flow` | Full Flow UI with payment method selector (default) |
 | `CheckoutComponentType.card` | Card-only fields with Pay button, no radio selector |
 
-### 6. Handle the result
+### 8. Handle the result
 
-`CheckoutFlowResult` is a sealed class with three subtypes:
+`CheckoutFlowResult` is a sealed class with four subtypes:
 
 | Type | Fields | Description |
 |------|--------|-------------|
 | `CheckoutFlowSuccess` | `paymentId` | Synchronous payment completed |
+| `CheckoutFlowTokenized` | `token`, `type`, `preferredScheme` | Card tokenized (token-only mode) |
 | `CheckoutFlowError` | `errorCode`, `message` | Payment failed or initialization error |
 | `CheckoutFlowCancelled` | — | User cancelled the payment |
 
@@ -254,6 +301,8 @@ Some payment methods (e.g. 3DS, redirects) complete asynchronously. In this case
 | `paymentSessionSecret` | `String` | Yes | — | Payment session secret from server |
 | `environment` | `CheckoutFlowEnvironment` | No | `sandbox` | `sandbox` or `production` |
 | `componentType` | `CheckoutComponentType` | No | `flow` | `flow` or `card` |
+| `locale` | `String?` | No | `null` | Form language (e.g. `"it"`, `"de"`, `"fr"`) |
+| `tokenOnly` | `bool` | No | `false` | If `true`, tokenizes card without processing payment |
 | `theme` | `CheckoutFlowTheme?` | No | `null` | Custom theme (null = default light theme) |
 
 ### CheckoutFlowTheme
