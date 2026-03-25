@@ -17,6 +17,7 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
         args: [String: Any]
     ) {
         self.containerView = UIView(frame: frame)
+        self.containerView.backgroundColor = .clear
         self.channel = FlutterMethodChannel(
             name: "checkout_flow_view_\(viewId)",
             binaryMessenger: messenger

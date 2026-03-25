@@ -53,6 +53,7 @@ For production payment processing, always refer to the [official Checkout.com do
 - **Locale support** — display form in user's language (it, de, fr, es, en, etc.)
 - **Skeleton loading** — built-in loading animation while native component initializes
 - **Dynamic height** — widget auto-resizes when validation errors appear
+- **Transparent container** — payment form blends seamlessly with host app background (light & dark mode)
 - iOS uses Swift Package Manager for the native Checkout.com SDK dependency
 
 ## Requirements

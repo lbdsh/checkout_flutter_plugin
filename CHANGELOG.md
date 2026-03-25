@@ -1,3 +1,8 @@
+## 2.1.0
+
+- **iOS:** Fixed container view background — set to `.clear` so the payment form blends seamlessly with the host app's scaffold background in both light and dark mode.
+- **Improved:** Theme `backgroundColor` and `formBackgroundColor` now correctly propagate to native SDK on both platforms, eliminating background color mismatch between the payment component and the host page.
+
 ## 2.0.0
 
 - **New:** `tokenOnly` mode — set `tokenOnly: true` to tokenize the card without processing payment. Returns `CheckoutFlowTokenized` with the card token for server-side payment processing.
