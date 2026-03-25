@@ -22,7 +22,7 @@ import com.checkout.components.interfaces.localisation.Locale as CkoLocale
 import com.checkout.components.interfaces.uicustomisation.designtoken.ColorTokens
 import com.checkout.components.interfaces.uicustomisation.designtoken.DesignTokens
 import com.checkout.components.interfaces.uicustomisation.BorderRadius
-import androidx.compose.ui.graphics.Color
+// Color conversion uses ARGB int -> unsigned long (not Compose Color packed format)
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
@@ -47,41 +47,42 @@ class CheckoutFlowPlatformView(
     }
     private val mainHandler = Handler(Looper.getMainLooper())
     private val TAG = "CheckoutFlow"
+    private var disposed = false
+    private var composeChild: View? = null
 
     private val heightCheckRunnable = object : Runnable {
         override fun run() {
-            checkAndReportHeight()
-            mainHandler.postDelayed(this, 300)
+            if (disposed) return
+            composeChild?.let { checkHeight(it) }
+            mainHandler.postDelayed(this, 500)
         }
     }
 
     init {
         setupFlow()
-        // Start polling for height changes (Compose views don't trigger layout change on parent reliably)
-        mainHandler.postDelayed(heightCheckRunnable, 500)
     }
 
-    private fun checkAndReportHeight() {
-        for (i in 0 until containerView.childCount) {
-            val child = containerView.getChildAt(i)
-            // Force measure if needed
-            if (child.measuredHeight == 0) {
-                child.measure(
-                    View.MeasureSpec.makeMeasureSpec(containerView.width, View.MeasureSpec.AT_MOST),
-                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
-                )
-            }
-            val heightPx = maxOf(child.height, child.measuredHeight)
+    private fun checkHeight(child: View) {
+        try {
+            val containerWidth = containerView.width
+            if (containerWidth <= 0) return
+
+            child.measure(
+                View.MeasureSpec.makeMeasureSpec(containerWidth, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+            )
+            val heightPx = child.measuredHeight
             if (heightPx > 0) {
                 val density = context.resources.displayMetrics.density
                 val heightDp = (heightPx / density).toInt()
                 if (heightDp > 0 && heightDp != lastReportedHeight) {
                     lastReportedHeight = heightDp
-                    Log.d(TAG, "Height changed: ${heightDp}dp (px=$heightPx, measured=${child.measuredHeight}, actual=${child.height})")
+                    Log.d(TAG, "Height changed: ${heightDp}dp (px=$heightPx)")
                     invokeOnMain("onHeightChanged", mapOf("height" to heightDp.toDouble()))
                 }
-                return
             }
+        } catch (e: Exception) {
+            Log.w(TAG, "Height check failed: ${e.message}")
         }
     }
 
@@ -134,15 +135,24 @@ class CheckoutFlowPlatformView(
             // Parse style colors from params
             val styleMap = params["theme"] as? Map<String, Any?>
             val appearance = if (styleMap != null) {
+                val d = ColorTokens() // defaults
+                Log.d(TAG, "Default colors: action=${d.colorAction}, bg=${d.colorBackground}, primary=${d.colorPrimary}, formBg=${d.colorFormBackground}")
+                // Constructor order: disabled, error, inverse, action, success, primary,
+                //   secondary, formBorder, border, outline, formBackground, background, scrolledContainer
                 val colorTokens = ColorTokens(
-                    colorAction = parseColor(styleMap["actionColor"] as? String),
-                    colorBackground = parseColor(styleMap["backgroundColor"] as? String),
-                    colorPrimary = parseColor(styleMap["primaryColor"] as? String),
-                    colorFormBackground = parseColor(styleMap["formBackgroundColor"] as? String),
-                    colorFormBorder = parseColor(styleMap["formBorderColor"] as? String),
-                    colorBorder = parseColor(styleMap["borderColor"] as? String),
-                    colorError = parseColor(styleMap["errorColor"] as? String),
-                    colorSuccess = parseColor(styleMap["successColor"] as? String),
+                    parseColorOrDefault(styleMap["disabledColor"] as? String, d.colorDisabled),
+                    parseColorOrDefault(styleMap["errorColor"] as? String, d.colorError),
+                    parseColorOrDefault(styleMap["inverseColor"] as? String, d.colorInverse),
+                    parseColorOrDefault(styleMap["actionColor"] as? String, d.colorAction),
+                    parseColorOrDefault(styleMap["successColor"] as? String, d.colorSuccess),
+                    parseColorOrDefault(styleMap["primaryColor"] as? String, d.colorPrimary),
+                    parseColorOrDefault(styleMap["secondaryColor"] as? String, d.colorSecondary),
+                    parseColorOrDefault(styleMap["formBorderColor"] as? String, d.colorFormBorder),
+                    parseColorOrDefault(styleMap["borderColor"] as? String, d.colorBorder),
+                    parseColorOrDefault(styleMap["outlineColor"] as? String, d.colorOutline),
+                    parseColorOrDefault(styleMap["formBackgroundColor"] as? String, d.colorFormBackground),
+                    parseColorOrDefault(styleMap["backgroundColor"] as? String, d.colorBackground),
+                    d.colorScrolledContainer // keep default
                 )
                 val borderFormRadius = (styleMap["borderFormRadius"] as? Number)?.toInt()
                 val borderButtonRadius = (styleMap["borderButtonRadius"] as? Number)?.toInt()
@@ -172,7 +182,7 @@ class CheckoutFlowPlatformView(
                 publicKey = publicKey,
                 environment = environment,
                 locale = ckoLocale,
-                // appearance = appearance,  // TODO: fix color conversion for Compose Color format
+                appearance = appearance,
                 paymentSession = PaymentSessionResponse(
                     id = paymentSessionId,
                     secret = paymentSessionSecret
@@ -183,20 +193,27 @@ class CheckoutFlowPlatformView(
                         invokeOnMain("onSuccess", mapOf("paymentId" to paymentId))
                     },
                     onError = { _, error ->
-                        invokeOnMain("onError", mapOf(
-                            "errorCode" to "PAYMENT_ERROR",
-                            "message" to (error.message ?: "Payment error")
-                        ))
+                        val msg = error.message ?: "Payment error"
+                        Log.e(TAG, "SDK error: $msg")
+                        // Don't report transient network errors to Flutter
+                        if (!msg.contains("network", ignoreCase = true) &&
+                            !msg.contains("unsuccessful", ignoreCase = true)) {
+                            invokeOnMain("onError", mapOf(
+                                "errorCode" to "PAYMENT_ERROR",
+                                "message" to msg
+                            ))
+                        }
                     },
                     onTokenized = { result: TokenizationResult ->
                         val token = result.data?.token ?: ""
-                        Log.d(TAG, "Tokenized: token=$token, type=${result.type}, scheme=${result.preferredScheme}")
+                        Log.d(TAG, "Tokenized: token=$token, type=${result.type}, scheme=${result.preferredScheme}, tokenOnly=$tokenOnly")
                         invokeOnMain("onTokenized", mapOf(
                             "token" to token,
                             "type" to (result.type ?: ""),
                             "preferredScheme" to (result.preferredScheme ?: "")
                         ))
-                        CallbackResult.Accepted
+                        // In tokenOnly mode, reject to prevent the SDK from processing the payment
+                        if (tokenOnly) CallbackResult.Rejected("Token obtained") else CallbackResult.Accepted
                     }
                 )
             )
@@ -228,6 +245,9 @@ class CheckoutFlowPlatformView(
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT
                         ))
+                        // Start polling for height changes
+                        composeChild = renderedView
+                        mainHandler.postDelayed(heightCheckRunnable, 500)
                     }
                     Log.d(TAG, "ComposeView added to container")
                     invokeOnMain("onReady", null)
@@ -248,26 +268,33 @@ class CheckoutFlowPlatformView(
     }
 
     /**
-     * Parse hex color string (#RRGGBB or #AARRGGBB) to Compose Color Long value.
+     * Parse hex color string (#RRGGBB or #AARRGGBB) to Compose Color ULong value,
+     * or return the default if null/invalid.
      */
-    private fun parseColor(hex: String?): Long {
-        if (hex == null) return Color.Unspecified.value.toLong()
+    private fun parseColorOrDefault(hex: String?, default: Long): Long {
+        if (hex == null) return default
         return try {
             val clean = hex.removePrefix("#")
             val argbInt = when (clean.length) {
-                6 -> (0xFF000000 or java.lang.Long.parseLong(clean, 16)).toInt()
-                8 -> java.lang.Long.parseLong(clean, 16).toInt()
-                else -> android.graphics.Color.BLACK
+                6 -> android.graphics.Color.parseColor("#$clean")
+                8 -> android.graphics.Color.parseColor("#$clean")
+                else -> return default
             }
-            Color(argbInt).value.toLong()
+            // SDK uses ARGB int as unsigned long, NOT Compose Color packed format
+            val result = argbInt.toUInt().toLong()
+            Log.d(TAG, "parseColor: #$clean -> $result (default example: action=${default})")
+            result
         } catch (e: Exception) {
-            Color.Unspecified.value.toLong()
+            Log.e(TAG, "parseColor failed for $hex: ${e.message}")
+            default
         }
     }
 
     override fun getView(): View = containerView
 
     override fun dispose() {
+        disposed = true
         mainHandler.removeCallbacks(heightCheckRunnable)
+        composeChild = null
     }
 }
