@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -49,19 +51,18 @@ class _CheckoutFlowWidgetState extends State<CheckoutFlowWidget> {
   @override
   Widget build(BuildContext context) {
     final creationParams = widget.config.toMap();
-    final height = _contentHeight ?? widget.height ?? 400;
+    final height = _contentHeight ?? widget.height ?? 500;
 
-    return AnimatedSize(
-      duration: const Duration(milliseconds: 200),
-      alignment: Alignment.topCenter,
-      child: SizedBox(
-        height: height,
-        child: Stack(
-          children: [
-            _buildPlatformView(creationParams),
-            if (!_isReady) _buildSkeleton(context),
-          ],
-        ),
+    return SizedBox(
+      height: height,
+      child: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Positioned.fill(
+            child: _buildPlatformView(creationParams),
+          ),
+          if (!_isReady) _buildSkeleton(context),
+        ],
       ),
     );
   }
@@ -125,14 +126,17 @@ class _CheckoutFlowWidgetState extends State<CheckoutFlowWidget> {
 
     switch (call.method) {
       case 'onReady':
-        if (!_isReady) {
-          _isReady = true;
+        if (!_isReady && mounted) {
+          setState(() => _isReady = true);
           widget.onReady?.call();
         }
       case 'onHeightChanged':
-        final height = (args?['height'] as num?)?.toDouble();
-        if (height != null && height > 0 && mounted) {
-          setState(() => _contentHeight = height);
+        // Only auto-resize if no explicit height was provided
+        if (widget.height == null) {
+          final height = (args?['height'] as num?)?.toDouble();
+          if (height != null && height > 0 && mounted) {
+            setState(() => _contentHeight = height);
+          }
         }
       case 'onTokenized':
         _tokenReceived = true;

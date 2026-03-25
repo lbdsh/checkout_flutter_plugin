@@ -106,8 +106,11 @@ class CheckoutFlowPlatformView: NSObject, FlutterPlatformView {
                 }
 
                 if component.isAvailable {
-                    let swiftUIView = AnyView(component.render())
-                    let hosting = UIHostingController(rootView: swiftUIView)
+                    let swiftUIView = VStack(spacing: 0) {
+                        component.render()
+                        Spacer(minLength: 0)
+                    }
+                    let hosting = UIHostingController(rootView: AnyView(swiftUIView))
                     if #available(iOS 16.0, *) {
                         hosting.sizingOptions = .intrinsicContentSize
                     }
